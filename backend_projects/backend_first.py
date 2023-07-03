@@ -18,66 +18,98 @@ while True:
 if reg == '3':
     print('out')
 
+class UserValidator:
+    def __init__(self):
+        with open("names.csv", "r") as f:
+            self.users = f.read().splitlines()
 
-def check_name(name):
-    with open("names.csv","r") as f:
-        users = f.read().splitlines()
-        for user in users:
+    def check_name(self, name):
+        for user in self.users:
             args = user.split(",")
-
-        while True:
             if args[0] == name:
+                return True
+        return False
 
-                break
-            else:
-                pass
-
-
-
-def check_email(email):
-    with open("names.csv","r") as f:
-        users = f.read().splitlines()
-        for user in users:
+    def check_email(self, email):
+        for user in self.users:
             args = user.split(",")
-        while True:
             if args[2] == email:
+                return True
+        return False
 
-                break
-            else:
-                pass
-
-
-
-def check_password(password):
-    with open("names.csv","r") as f:
-        users = f.read().splitlines()
-        for user in users:
+    def check_password(self, password):
+        for user in self.users:
             args = user.split(",")
-        while True:
             if args[1] == password:
+                return True
+        return False
+# def check_name(name):
+#     with open("names.csv","r") as f:
+#         users = f.read().splitlines()
+#         for user in users:
+#             args = user.split(",")
+#
+#         while True:
+#             if args[0] == name:
+#
+#                 break
+#             else:
+#                 pass
+#
+#
+#
+# def check_email(email):
+#     with open("names.csv","r") as f:
+#         users = f.read().splitlines()
+#         for user in users:
+#             args = user.split(",")
+#         while True:
+#             if args[2] == email:
+#
+#                 break
+#             else:
+#                 pass
+#
+#
+#
+# def check_password(password):
+#     with open("names.csv","r") as f:
+#         users = f.read().splitlines()
+#         for user in users:
+#             args = user.split(",")
+#         while True:
+#             if args[1] == password:
+#
+#                 break
+#             else:
+#                 pass
+#
 
-                break
-            else:
-                pass
+
+
+
 
 
 
 while reg == '1':
+    validator = UserValidator()
+    # in_name = input('Ur name:\n')
+    # in_email = input('Ur email:\n')
+    # in_password = input('Ur password:\n')
+    name_exists = validator.check_name(input('Ur name:\n'))
+    email_exists = validator.check_email(input('Ur email:\n'))
+    password_exists = validator.check_password(input('Ur password:\n'))
 
-    in_name = input('Ur name:\n')
-    in_email = input('Ur email:\n')
-    in_password = input('Ur password:\n')
-
-    if check_name(in_name):
-        pass
-    elif check_email(in_email):
-        pass
-    elif check_password(in_password):
-        pass
-    else :
+    if name_exists is False:
+        continue
+    elif email_exists is False:
+        continue
+    elif password_exists is False:
+        continue
+    else:
         print('U successfully enter')
 
-    print(f'U successfully enter to ur account "{in_name}"\n*********Hello*World***********')
+    print(f'U successfully enter to ur account "{name_exists}"\n*********Hello*World***********')
 
     while True:
         main_menu = input('Okay, choose option'
@@ -199,6 +231,10 @@ while reg == '1':
     break
 
 while reg == '2':
+
+
+
+
     name = input('Ur name:\n')
 
     if not name.isalpha():
@@ -335,8 +371,8 @@ print("It's ur home, bruv")
 print('      ______       ')
 print('     /HELLO!\      ')
 print('    /  BRUV  \     ')
-print('   /|________|\      ')
-print('    |   __   |      ')
-print('    |  |__|  |      ')
-print('    |________|      ')
+print('   /|________|\    ')
+print('    |   __   |     ')
+print('    |  |__|  |     ')
+print('    |________| ဈစ  ')
 
