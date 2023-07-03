@@ -1,0 +1,7 @@
+print('      ______       ')
+print('     /HELLO!\      ')
+print('    /  BRUV  \     ')
+print('   /|________|\      ')
+print('    |   __   |      ')
+print('    |  |__|  |      ')
+print('    |________|      ')

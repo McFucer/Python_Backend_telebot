@@ -85,11 +85,10 @@ while reg == '1':
                           '\n    2.balance'
                           '\n    3.Out\n__')
         # def user_money():
-        with open('names.csv', 'r') as f:
+        with open('balance.csv', 'r') as f:
             users = f.read().splitlines()
             for user in users:
                 args = user.split(",")
-        money = int(args[3])
 
 
 
@@ -115,12 +114,22 @@ while reg == '1':
                 print('U sure that u want to buy GTA 5'
                       '\n1.yes'
                       '\n2.no'
-                      f'\n                                                 (ur balance is: {money})')
+                      f'\n                                                 (ur balance is: {args[0]})')
                 gta_choose_yes_no = input('__')
-                if gta_choose_yes_no == '1' and money >= 10:
+
+
+                if gta_choose_yes_no == '1' and int(args[0]) >= 10:
                     print('U successfully bought the product')
-                    result = money - gta
+                    result = int(args[0]) - gta
                     print(f'Money left: {result}')
+
+                    with open('balance.csv', 'w', newline='') as scvfile:
+                        fieldnam = ['Money']
+                        writer_suck = csv.DictWriter(scvfile, fieldnames=fieldnam)
+
+                        writer_suck.writeheader()
+                        writer_suck.writerow({'Money': f'{result}'})
+
 
 
                 elif gta_choose_yes_no != '1':
@@ -129,15 +138,28 @@ while reg == '1':
                 else:
                     print('Unfortunately, u dont have 10$ in ur balance')
             elif choose_game == '2':
+                with open('balance.csv', 'r') as f:
+                    users = f.read().splitlines()
+                    for user in users:
+                        args = user.split(",")
                 print('U sure that u want to buy Detroit'
                       '\n1.yes'
                       '\n2.no'
-                      f'\n                                                 (ur balance is: {money})')
+                      f'\n                                                 (ur balance is: {args[0]})')
                 detroit_choose_yes_no = input('__')
-                if detroit_choose_yes_no == '1' and int(money) >= gta:
+
+                if detroit_choose_yes_no == '1' and int(args[0]) >= gta:
                     print('U successfully bought the product')
-                    result = money - detroit
+                    result = int(args[0]) - detroit
                     print(f'Money left: {result}')
+
+                    with open('balance.csv', 'w', newline='') as scvfile:
+                        fieldnam = ['Money']
+                        writer_suck = csv.DictWriter(scvfile, fieldnames=fieldnam)
+
+                        writer_suck.writeheader()
+                        writer_suck.writerow({'Money': f'{result}'})
+
 
                 elif detroit_choose_yes_no != '1':
                     print('U cancelled the purchase')
@@ -145,7 +167,11 @@ while reg == '1':
                 else:
                     print('Unfortunately, u dont have 8$ in ur balance')
         elif main_menu == '2':
-            print(f'Ur balance is {money}')
+            with open('balance.csv', 'r') as f:
+                users = f.read().splitlines()
+                for user in users:
+                    args = user.split(",")
+            print(f'Ur balance is {args[0]}')
         elif main_menu == '3':
             break
 
@@ -251,14 +277,14 @@ while reg == '2':
                   f'\n                                                 (ur balance is: {args[0]})')
             gta_choose_yes_no = input('__')
 
-            closed_op_ii = int(args[0])
-            if gta_choose_yes_no == '1' and closed_op_ii >= gta:
+
+            if gta_choose_yes_no == '1' and int(args[0]) >= gta:
                 print('U successfully bought the product')
                 result4reg = int(args[0]) - 10
 
                 with open('balance.csv', 'w', newline='') as scvfile:
                     fieldnam = ['Money']
-                    writer_suck = csv.DictWriter(scvfile, fieldnames=fieldname)
+                    writer_suck = csv.DictWriter(scvfile, fieldnames=fieldnam)
 
                     writer_suck.writeheader()
                     writer_suck.writerow({'Money': f'{result4reg}'})
@@ -284,7 +310,7 @@ while reg == '2':
                 result = int(args[0]) - detroit
                 with open('balance.csv', 'w', newline='') as scvfile:
                     fieldnam = ['Money']
-                    writer_suck = csv.DictWriter(scvfile, fieldnames=fieldname)
+                    writer_suck = csv.DictWriter(scvfile, fieldnames=fieldnam)
 
                     writer_suck.writeheader()
                     writer_suck.writerow({'Money': f'{result}'})
@@ -305,11 +331,12 @@ while reg == '2':
     elif main_menu == '3':
         break
 
-
-
-
-
-
-
-
+print("It's ur home, bruv")
+print('      ______       ')
+print('     /HELLO!\      ')
+print('    /  BRUV  \     ')
+print('   /|________|\      ')
+print('    |   __   |      ')
+print('    |  |__|  |      ')
+print('    |________|      ')
 
