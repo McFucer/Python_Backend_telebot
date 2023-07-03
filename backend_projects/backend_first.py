@@ -20,8 +20,7 @@ def check_name(name):
 
                 break
             else:
-                print('Its not right, plz rewrite ur name')
-
+                pass
 
 
 
@@ -35,7 +34,7 @@ def check_email(email):
 
                 break
             else:
-                print('Its not right, plz rewrite ur name')
+                pass
 
 
 
@@ -49,16 +48,15 @@ def check_password(password):
 
                 break
             else:
-                print('Its not right, plz rewrite ur name')
-
+                pass
 
 
 
 while reg == '1':
 
-    in_name = input('Ur name:')
-    in_email = input('Ur email:')
-    in_password = input('Ur password:')
+    in_name = input('Ur name:\n')
+    in_email = input('Ur email:\n')
+    in_password = input('Ur password:\n')
 
     if check_name(in_name):
         pass
@@ -70,6 +68,77 @@ while reg == '1':
         print('U successfully enter')
 
     print(f'U successfully enter to ur account {in_name}\n*********Hello*World***********')
+
+    while True:
+        main_menu = input('Okay, choose option'
+                          '\n    1.shop'
+                          '\n    2.balance'
+                          '\n    3.Out\n__')
+        # def user_money():
+        with open('names.csv', 'r') as f:
+            users = f.read().splitlines()
+            for user in users:
+                args = user.split(",")
+        money = int(args[3])
+
+
+
+
+        # def check_money_gta5():
+        #     with open('names.csv', 'r') as f:
+        #         users = f.read().splitlines()
+        #         for user in users:
+        #             args = user.split(",")
+        #         if args[3] >= 10:
+        #             pass
+        #
+
+
+        if main_menu == '1':
+            print('1. GTA 5 -> 10$'
+                  '\n2. Detroit: Become Human -> 8$')
+            choose_game = input('__')
+            gta = 10
+            detroit = 8
+
+            if choose_game == '1':
+                print('U sure that u want to buy GTA 5'
+                      '\n1.yes'
+                      '\n2.no'
+                      f'\n                                                 (ur balance is: {money})')
+                gta_choose_yes_no = input('__')
+                if gta_choose_yes_no == '1' and money >= 10:
+                    print('U successfully bought the product')
+                    result = money - gta
+                    print(f'Money left: {result}')
+
+                elif gta_choose_yes_no != '1':
+                    print('U cancelled the purchase')
+                    continue
+                else:
+                    print('Unfortunately, u dont have 10$ in ur balance')
+            elif choose_game == '2':
+                print('U sure that u want to buy Detroit'
+                      '\n1.yes'
+                      '\n2.no'
+                      f'\n                                                 (ur balance is: {money})')
+                detroit_choose_yes_no = input('__')
+                if detroit_choose_yes_no == '1' and int(money) >= gta:
+                    print('U successfully bought the product')
+                    result = money - detroit
+                    print(f'Money left: {result}')
+
+                elif detroit_choose_yes_no != '1':
+                    print('U cancelled the purchase')
+                    continue
+                else:
+                    print('Unfortunately, u dont have 8$ in ur balance')
+        elif main_menu == '2':
+            print(f'Ur balance is {money}')
+        elif main_menu == '3':
+            break
+
+
 
     # in_name = input('Ur name:')
     # if check_name(in_name):
@@ -90,9 +159,7 @@ while reg == '1':
     #     continue
 
 
-
     break
-
 
 while reg == '2':
     name = input('Ur name:\n')
