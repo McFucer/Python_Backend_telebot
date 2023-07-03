@@ -1,9 +1,19 @@
 import csv
+import re
 
+while True:
+    reg = input('1. Login'
+                    '\n2. Register'
+                  '\n3. Log Out \n__')
+    if reg != "1" and reg != "2" and reg != "3":
+        print('Choose option\n'             
+              '                            |like|\n'
+              '                            | __1|')
+        continue
 
-reg = input('1. Login'
-                '\n2. Register'
-                '\n3. Log Out \n__')
+    else :
+        break
+
 
 if reg == '3':
     print('out')
@@ -67,7 +77,7 @@ while reg == '1':
     else :
         print('U successfully enter')
 
-    print(f'U successfully enter to ur account {in_name}\n*********Hello*World***********')
+    print(f'U successfully enter to ur account "{in_name}"\n*********Hello*World***********')
 
     while True:
         main_menu = input('Okay, choose option'
@@ -111,6 +121,7 @@ while reg == '1':
                     print('U successfully bought the product')
                     result = money - gta
                     print(f'Money left: {result}')
+
 
                 elif gta_choose_yes_no != '1':
                     print('U cancelled the purchase')
@@ -168,8 +179,10 @@ while reg == '2':
         print('Dont write numbers or probels')
         continue
     email = input('Ur email:\n')
-    if '@' not in email:
-        print('Email must have "@"')
+    if re.search('@', email):
+        pass
+    else :
+        print('Email should have "@"')
         continue
 
     password = input('Ur password:\n')
@@ -190,6 +203,12 @@ while reg == '2':
         except ValueError:
             print('Only numbers')
             continue
+        with open('balance.csv','w',newline='') as scvfile:
+            fieldname = ['Money']
+            writer_sucka = csv.DictWriter(scvfile, fieldnames=fieldname)
+
+            writer_sucka.writeheader()
+            writer_sucka.writerow({'Money':f'{money}'})
         break
 
 
@@ -201,7 +220,7 @@ while reg == '2':
 
         writer.writeheader()
         writer.writerow(
-            {f'Name': f'{name}', 'Password': f'{password}', 'Email': f'{email}', 'Money': f'{money}'})
+            {f'Name': f'{name}', 'Password': f'{password}', 'Email': f'{email}'})
     break
 
 
@@ -211,6 +230,12 @@ while reg == '2':
                  '\n    1.shop'
                  '\n    2.balance'
                      '\n    3.Out\n__')
+    with open('balance.csv','r') as f:
+        users = f.read().splitlines()
+        for user in users:
+            args = user.split(",")
+
+
 
     if main_menu == '1' :
         print('1. GTA 5 -> 10$'
@@ -218,16 +243,25 @@ while reg == '2':
         choose_game = input('__')
         gta = 10
         detroit = 8
+
         if choose_game == '1':
             print('U sure that u want to buy GTA 5'
                   '\n1.yes'
                   '\n2.no'
-                  f'\n                                                 (ur balance is: {money})')
+                  f'\n                                                 (ur balance is: {args[0]})')
             gta_choose_yes_no = input('__')
-            if gta_choose_yes_no == '1' and money >= gta:
+
+            closed_op_ii = int(args[0])
+            if gta_choose_yes_no == '1' and closed_op_ii >= gta:
                 print('U successfully bought the product')
-                result = money - gta
-                print(f'Money left: {result}')
+                result4reg = int(args[0]) - 10
+
+                with open('balance.csv', 'w', newline='') as scvfile:
+                    fieldnam = ['Money']
+                    writer_suck = csv.DictWriter(scvfile, fieldnames=fieldname)
+
+                    writer_suck.writeheader()
+                    writer_suck.writerow({'Money': f'{result4reg}'})
 
             elif gta_choose_yes_no != '1':
                 print('U cancelled the purchase')
@@ -235,15 +269,26 @@ while reg == '2':
             else :
                 print('Unfortunately, u dont have 10$ in ur balance')
         elif choose_game == '2':
+            with open('balance.csv', 'r') as f:
+                users = f.read().splitlines()
+                for user in users:
+                    args = user.split(",")
+
             print('U sure that u want to buy Detroit'
                   '\n1.yes'
                   '\n2.no'
-                  f'\n                                                 (ur balance is: {money})')
+                  f'\n                                                 (ur balance is: {args[0]})')
             detroit_choose_yes_no = input('__')
-            if detroit_choose_yes_no == '1' and money >= gta:
+            if detroit_choose_yes_no == '1' and int(args[0]) >= gta:
                 print('U successfully bought the product')
-                result = money - detroit
-                print(f'Money left: {result}')
+                result = int(args[0]) - detroit
+                with open('balance.csv', 'w', newline='') as scvfile:
+                    fieldnam = ['Money']
+                    writer_suck = csv.DictWriter(scvfile, fieldnames=fieldname)
+
+                    writer_suck.writeheader()
+                    writer_suck.writerow({'Money': f'{result}'})
+
 
             elif detroit_choose_yes_no != '1':
                 print('U cancelled the purchase')
@@ -251,7 +296,12 @@ while reg == '2':
             else :
                 print('Unfortunately, u dont have 8$ in ur balance')
     elif main_menu == '2':
-        print(f'Ur balance is {money}')
+        with open('balance.csv', 'r') as f:
+            users = f.read().splitlines()
+            for user in users:
+                args = user.split(",")
+
+        print(f'Ur balance is {args[0]}')
     elif main_menu == '3':
         break
 
