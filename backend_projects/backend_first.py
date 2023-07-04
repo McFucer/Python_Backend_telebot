@@ -113,9 +113,9 @@ while reg == '1':
 
     while True:
         main_menu = input('Okay, choose option'
-                          '\n    1.shop'
-                          '\n    2.balance'
-                          '\n    3.Out\n__')
+                          '\n    1.Shop'
+                          '\n    2.Balance'
+                          '\n    3.Donate\n    4.Out\n__')
         # def user_money():
         with open('balance.csv', 'r') as f:
             users = f.read().splitlines()
@@ -205,7 +205,37 @@ while reg == '1':
                     args = user.split(",")
             print(f'Ur balance is {args[0]}')
         elif main_menu == '3':
+            print('How much money u wanna donate:')
+            while True:
+                try:
+                    donate_money = int(input(''))
+                except ValueError:
+                    print('Dont write any letters or symbols.')
+                    continue
+
+                with open('balance.csv', 'r') as f:
+                    users = f.read().splitlines()
+                    for user in users:
+                        args = user.split(",")
+
+                result4bal = int(args[0]) + donate_money
+
+                with open('balance.csv', 'w', newline='') as scvfile:
+                    fieldname = ['Money']
+                    writer_suck = csv.DictWriter(scvfile, fieldnames=fieldname)
+
+                    writer_suck.writeheader()
+                    writer_suck.writerow({'Money': f'{result4bal}'})
+
+                break
+
+
+        elif main_menu == '4':
             break
+
+        else :
+            print('Dont write any letters or symbols')
+            continue
 
 
 
@@ -291,7 +321,7 @@ while reg == '2':
     main_menu = input('Okay, choose option'
                  '\n    1.shop'
                  '\n    2.balance'
-                     '\n    3.Out\n__')
+                     '\n    3.Donate\n    4.Out\n__')
     with open('balance.csv','r') as f:
         users = f.read().splitlines()
         for user in users:
@@ -364,8 +394,39 @@ while reg == '2':
                 args = user.split(",")
 
         print(f'Ur balance is {args[0]}')
+
     elif main_menu == '3':
+        print('How much money u wanna donate:')
+        while True:
+            try:
+                donate_money = int(input(''))
+            except ValueError:
+                print('Dont write any letters or symbols.')
+                continue
+
+            with open('balance.csv', 'r') as f:
+                users = f.read().splitlines()
+                for user in users:
+                    args = user.split(",")
+
+            result4bal = int(args[0]) + donate_money
+
+            with open('balance.csv', 'w', newline='') as scvfile:
+                fieldname = ['Money']
+                writer_suck = csv.DictWriter(scvfile, fieldnames=fieldname)
+
+                writer_suck.writeheader()
+                writer_suck.writerow({'Money': f'{result4bal}'})
+
+            break
+
+
+    elif main_menu == '4':
         break
+
+    else:
+        print('Write only number')
+        continue
 
 
 
