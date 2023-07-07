@@ -17,7 +17,7 @@ while True:
 
 
 if reg == '3':
-    print('out')
+    print('Out')
 
 
 # def check_name(name):

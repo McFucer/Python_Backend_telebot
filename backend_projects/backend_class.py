@@ -1,7 +1,7 @@
 class UserValidator:
     def __init__(self):
         with open("names.csv", "r") as f:
-            self.users = f.read().splitlines()
+            self.users  = f.read().splitlines()
 
     def check_name(self, name):
         for user in self.users:
