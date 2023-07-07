@@ -1,6 +1,6 @@
 import requests
 import datetime
-from config import tg_bot_token, open_weather_token
+from telegram_projects.Telegram_Whether.config import tg_bot_token, open_weather_token
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
@@ -38,48 +38,48 @@ async def start_command(message: types.Message):
 @dp.message_handler()
 async def get_weather(message: types.Message):
     if message.text == 'Tashkent':
-        tash = open('tashkent.png','rb')
+        tash = open('tashkent.png', 'rb')
         await message.answer_photo(tash)
 
     elif message.text == 'Andijon':
-        a = open('andijan.png','rb')
+        a = open('andijan.png', 'rb')
         await message.answer_photo(a)
 
     elif message.text == 'Fergana':
-        b = open('fergana.png','rb')
+        b = open('fergana.png', 'rb')
         await message.answer_photo(b)
 
     elif message.text == 'Jizzakh':
-        c = open('jizzakh.png','rb')
+        c = open('jizzakh.png', 'rb')
         await message.answer_photo(c)
 
     elif message.text == 'Namangan':
-        d = open('namangan.png','rb')
+        d = open('namangan.png', 'rb')
         await message.answer_photo(d)
 
     elif message.text == 'Horazm':
-        e = open('surhandaryo.png','rb')
+        e = open('surhandaryo.png', 'rb')
         await message.answer_photo(e)
 
     elif message.text == 'Qashqadaryo':
-        f = open('qashqadaryo.png','rb')
+        f = open('qashqadaryo.png', 'rb')
         await message.answer_photo(f)
 
     elif message.text == 'Samarqand':
-        j = open('samarqand.png','rb')
+        j = open('samarqand.png', 'rb')
         await message.answer_photo(j)
 
     elif message.text == 'Sirdaryo':
-        q = open('sirdaryo.png','rb')
+        q = open('sirdaryo.png', 'rb')
         await message.answer_photo(q)
 
     elif message.text == 'Surxondaryo':
-        s = open('surhandaryo.png','rb')
+        s = open('surhandaryo.png', 'rb')
         await message.answer_photo(s)
 
 
     elif message.text == 'Karakalpakstan':
-        u = open('karakalpakstan.png','rb')
+        u = open('karakalpakstan.png', 'rb')
         await message.answer_photo(u)
 
 

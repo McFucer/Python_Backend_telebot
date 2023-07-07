@@ -1,6 +1,6 @@
 import csv
 import re
-from backend_class import UserValidator
+from backend_projects.backend_STEAM.backend_class import UserValidator
 
 while True:
     reg = input('1. Login'
@@ -272,7 +272,7 @@ while reg == '2':
         except ValueError:
             print('Only numbers')
             continue
-        with open('balance.csv','w',newline='') as scvfile:
+        with open('balance.csv', 'w', newline='') as scvfile:
             fieldname = ['Money']
             writer_sucka = csv.DictWriter(scvfile, fieldnames=fieldname)
 
@@ -299,7 +299,7 @@ while reg == '2':
                  '\n    1.shop'
                  '\n    2.balance'
                      '\n    3.Donate\n    4.Out\n__')
-    with open('balance.csv','r') as f:
+    with open('balance.csv', 'r') as f:
         users = f.read().splitlines()
         for user in users:
             args = user.split(",")
